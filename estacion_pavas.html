@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estación de Pavas — El Oasis History &amp; Culture Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8dfc8;
+    --paper-alt: #ddd2b4;
+    --tide: #2e3d4a;
+    --tide-dark: #22303b;
+    --sepia: #8b6914;
+    --rust: #9c4a2e;
+    --ink: #2a2620;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--tide);
+    color: var(--paper);
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+
+  .series-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 44px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  header h1 span {
+    display: block;
+    font-style: normal;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b9c4cc;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  .header-rule {
+    width: 90px;
+    height: 1px;
+    background: var(--sepia);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    max-width: 620px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #cdd6db;
+    font-size: 17px;
+  }
+
+  nav {
+    background: var(--paper-alt);
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #c7bb98;
+  }
+
+  nav a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tide);
+    text-decoration: none;
+    margin: 0 18px;
+  }
+
+  nav a:hover { color: var(--rust); }
+
+  .intro-band {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .intro-band p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 50px 24px 30px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin: 50px 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .section-head::before, .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--sepia);
+    opacity: 0.5;
+  }
+
+  .section-head h2 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--tide);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .route-note {
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  .route-note strong { color: var(--rust); }
+
+  .station-data-strip {
+    display: flex;
+    justify-content: center;
+    gap: 36px;
+    flex-wrap: wrap;
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 20px 24px;
+    margin-bottom: 44px;
+  }
+
+  .station-data-strip div {
+    text-align: center;
+  }
+
+  .station-data-strip dt {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b6354;
+    margin-bottom: 4px;
+  }
+
+  .station-data-strip dd {
+    margin: 0;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--tide);
+  }
+
+  /* Plate cards */
+  .card {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    cursor: zoom-in;
+  }
+
+  .card-body {
+    padding: 28px 32px;
+  }
+
+  .card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .card-accession {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--sepia);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .card-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+    letter-spacing: 0.04em;
+  }
+
+  .card h3 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--tide);
+    font-size: 28px;
+    margin: 6px 0 2px;
+  }
+
+  .subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: #6b6354;
+    margin-bottom: 14px;
+  }
+
+  .hairline {
+    height: 1px;
+    background: #c7bb98;
+    margin: 14px 0 18px;
+  }
+
+  .card p { margin: 0 0 14px; font-size: 17px; }
+
+  .card-data {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 6px 18px;
+    background: var(--paper-alt);
+    border-radius: 3px;
+    padding: 16px 20px;
+    margin-top: 18px;
+    font-size: 15.5px;
+  }
+
+  .card-data dt {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    align-self: start;
+    padding-top: 1px;
+  }
+
+  .card-data dd { margin: 0; }
+
+  .source-note {
+    margin-top: 18px;
+    font-size: 13.5px;
+    color: #6b6354;
+    font-style: italic;
+  }
+
+  .original-caption {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    color: var(--ink);
+    background: var(--paper-alt);
+    border-left: 3px solid var(--sepia);
+    padding: 8px 14px;
+    margin: 0 0 16px;
+    display: inline-block;
+  }
+
+  .essay {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    border-radius: 4px;
+    padding: 36px 40px;
+    margin: 50px 0;
+  }
+
+  .essay h2 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--paper);
+    font-size: 24px;
+    margin-top: 0;
+  }
+
+  .essay p { font-size: 17px; margin-bottom: 14px; }
+  .essay p:last-child { margin-bottom: 0; }
+
+  footer {
+    background: var(--tide-dark);
+    color: #aab5bc;
+    text-align: center;
+    padding: 30px 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    letter-spacing: 0.05em;
+  }
+
+  footer a { color: #c9b98a; text-decoration: none; }
+
+  /* Lightbox */
+  .lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 18, 14, 0.92);
+    z-index: 100;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    cursor: zoom-out;
+  }
+
+  .lightbox.active { display: flex; }
+
+  .lightbox img {
+    max-width: 100%;
+    max-height: 92vh;
+    border: 4px solid var(--paper);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 32px; }
+    .card-body { padding: 22px 20px; }
+    .station-data-strip { gap: 20px; padding: 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="series-label">History &amp; Culture · Ferrocarril al Pacífico · Km 6.3</div>
+  <h1>Estación de Pavas<span>San José Province · 6.3 km from San José</span></h1>
+  <div class="header-rule"></div>
+  <p class="header-sub">A station spoke of the Pacific Railway documentary supplement, gathering a present-day photograph of the surviving station building — a departure from this catalogue's usual period plates, included to show what remains on the ground today</p>
+</header>
+
+<nav>
+  <a href="ferrocarril_pacifico_estaciones.html">↩ The Full Line</a>
+  <a href="#estacion">The Station Today</a>
+  <a href="#historia">History</a>
+</nav>
+
+<div class="intro-band">
+  <p>Km 6.3 — station No. 3 on the Pacific line, among the earliest stations built on the route, in the district that also gives its name to the nearby Río Virilla crossing documented elsewhere in this catalogue.</p>
+</div>
+
+<main>
+
+  <div class="route-note">
+    <strong>About this spoke:</strong> Pavas is named among the earliest stations built on the Pacific line, alongside San José, Ojo de Agua, Nuestro Amo, Turrucares, and Hacienda Vieja — constructed progressively during the first decade of the 1900s as William Lynn's, and later Warren H. Knowlton's, construction crews worked outward from the capital. This spoke departs from this catalogue's usual practice of gathering only period plates: the single photograph here is a present-day image of the surviving station building, showing a two-story timber structure with a hipped roof and a modern "PAVAS" sign. Whether this building is the original early-1900s structure or a later replacement on the same site has not been confirmed by any source consulted for this catalogue, and should be treated as an open question rather than settled fact.
+  </div>
+
+  <div class="station-data-strip">
+    <div><dt>Distance from San José</dt><dd>6.3 km</dd></div>
+    <div><dt>Province</dt><dd>San José</dd></div>
+    <div><dt>Built</dt><dd>Among the earliest stations, first decade of the 1900s</dd></div>
+    <div><dt>Related crossing</dt><dd><a href="estacion_puente_virilla.html">Puente Río Virilla</a></dd></div>
+  </div>
+
+  <div class="section-head" id="estacion"><h2>The Station Today</h2></div>
+
+  <!-- ============================================================
+       NEW PLATES: paste a new <div class="card"> block here,
+       below this comment and above the existing PAVAS-01 card.
+       ============================================================ -->
+
+  <!-- CARD: pavas_modern -->
+  <div class="card" id="PAVAS-01">
+    <img src="data:image/jpeg;base64,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" alt="A weathered two-story wooden station building with a hipped roof and teal trim, a modern sign reading PAVAS mounted on the side wall, photographed in the present day">
+    <div class="card-body">
+      <div class="card-meta-row">
+        <span class="card-accession">PAVAS-001</span>
+        <span class="card-date">Present day</span>
+      </div>
+      <h3>Estación Pavas, Today</h3>
+      <div class="subtitle">A present-day photograph, not a period plate</div>
+      <div class="hairline"></div>
+      <p>A two-story timber building with a hipped roof and weathered teal-painted trim stands beside the old right-of-way, its ground floor lined with shuttered windows and doors along a covered walkway. A modern sign reading "PAVAS" is mounted on the side wall above a smaller sign that appears to read "P.B.A.S." or similar — likely a faded or partial rendering of the same name. Unlike every other photograph in this catalogue, which documents the Pacific line in the early-to-mid twentieth century, this image was taken in the present day and shows the building as it stands now, whatever its current use.</p>
+      <p>This catalogue cannot confirm whether the structure shown here is the original early-1900s station building or a later reconstruction on the same site; no source consulted gives a construction or rebuilding date for this specific structure. It is included as documentary evidence of what survives at Pavas today, set deliberately apart from this collection's period material rather than blended into it.</p>
+      <div class="card-data">
+        <dt>Subject</dt><dd>Surviving station building, present-day condition</dd>
+        <dt>Visible markings</dt><dd>Modern sign reading "PAVAS"</dd>
+        <dt>Date</dt><dd>Present day (photograph undated within the contemporary period)</dd>
+        <dt>Construction date</dt><dd>Unconfirmed &mdash; original building or later replacement not established</dd>
+      </div>
+      <div class="source-note">Source: Craig's personal photograph collection. Caption: "Pavas."</div>
+    </div>
+  </div>
+
+  <div class="essay" id="historia">
+    <h2>Pavas: One of the Line's First Stations</h2>
+    <p>Pavas belongs to the earliest generation of stations built on the Pacific line, constructed during the first decade of the twentieth century alongside San José, Ojo de Agua, Nuestro Amo, Turrucares, and Hacienda Vieja, as William Lynn's original 1897 contract — and later Warren H. Knowlton's completion of the line in 1910 — pushed construction outward from the capital toward the coast. At km 6.3, it was one of the first stops a traveler leaving San José would have reached, not far from where the line crossed the Río Virilla on the steel trestle bridge documented separately in this catalogue's standalone Virilla page.</p>
+    <p>What makes this spoke different from the rest of the catalogue is its source material. Every other station and bridge gathered here is documented through period photographs, postcards, or souvenir cards from the railway's working decades. The single plate in this spoke is, by contrast, a present-day photograph — evidence not of how Pavas looked in 1905 or 1923, but of what stands on or near the site today: a weathered two-story timber building, clearly old, clearly disused as an active station, but still standing and still marked with the town's name. Whether this building dates to the line's original construction or was rebuilt at some later point is not something this catalogue can answer with the sources at hand; it is offered here honestly as an unresolved question, alongside the photograph itself as the best available record of the site's current state.</p>
+  </div>
+
+</main>
+
+<div class="lightbox" id="lightbox">
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<footer>
+  El Oasis History &amp; Culture Series · Costa Rica Histórica · Estación de Pavas<br>
+  <a href="ferrocarril_pacifico_estaciones.html">Return to the Full Line</a>
+</footer>
+
+
+
+<script>
+  document.querySelectorAll('.card img').forEach(img => {
+    img.addEventListener('click', () => {
+      document.getElementById('lightbox-img').src = img.src;
+      document.getElementById('lightbox-img').alt = img.alt;
+      document.getElementById('lightbox').classList.add('active');
+    });
+  });
+  document.getElementById('lightbox').addEventListener('click', () => {
+    document.getElementById('lightbox').classList.remove('active');
+  });
+</script>
+
+</body>
+</html>
