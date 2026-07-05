@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estaciones del Ferrocarril al Pacífico — El Oasis History &amp; Culture Series</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Josefin+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #e8dfc8;
+    --paper-alt: #ddd2b4;
+    --tide: #2e3d4a;
+    --tide-dark: #22303b;
+    --sepia: #8b6914;
+    --rust: #9c4a2e;
+    --ink: #2a2620;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  header {
+    background: var(--tide);
+    color: var(--paper);
+    padding: 56px 24px 40px;
+    text-align: center;
+  }
+
+  .series-label {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 14px;
+  }
+
+  header h1 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 44px;
+    margin: 0;
+    letter-spacing: 0.01em;
+  }
+
+  header h1 span {
+    display: block;
+    font-style: normal;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #b9c4cc;
+    margin-top: 14px;
+    font-weight: 300;
+  }
+
+  .header-rule {
+    width: 90px;
+    height: 1px;
+    background: var(--sepia);
+    margin: 24px auto;
+  }
+
+  .header-sub {
+    max-width: 620px;
+    margin: 0 auto;
+    font-style: italic;
+    color: #cdd6db;
+    font-size: 17px;
+  }
+
+  nav {
+    background: var(--paper-alt);
+    text-align: center;
+    padding: 14px;
+    border-bottom: 1px solid #c7bb98;
+  }
+
+  nav a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--tide);
+    text-decoration: none;
+    margin: 0 18px;
+  }
+
+  nav a:hover { color: var(--rust); }
+
+  .intro-band {
+    background: var(--tide-dark);
+    color: #d8dde0;
+    padding: 30px 24px;
+    text-align: center;
+  }
+
+  .intro-band p {
+    max-width: 700px;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 18px;
+  }
+
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 50px 24px 30px;
+  }
+
+  .section-head {
+    text-align: center;
+    margin: 50px 0 30px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+  }
+
+  .section-head::before, .section-head::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--sepia);
+    opacity: 0.5;
+  }
+
+  .section-head h2 {
+    font-weight: 500;
+    font-style: italic;
+    font-size: 22px;
+    color: var(--tide);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  .route-note {
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 18px 24px;
+    margin-bottom: 40px;
+    font-size: 16px;
+  }
+
+  .route-note strong { color: var(--rust); }
+
+  /* Station cards */
+  .card {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    margin-bottom: 36px;
+    overflow: hidden;
+  }
+
+  .card-body {
+    padding: 28px 32px;
+  }
+
+  .card-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 10px;
+  }
+
+  .card-accession {
+    font-family: 'Josefin Sans', sans-serif;
+    background: var(--sepia);
+    color: var(--paper);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .card-date {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+    letter-spacing: 0.04em;
+  }
+
+  .card h3 {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--tide);
+    font-size: 28px;
+    margin: 6px 0 2px;
+  }
+
+  .card .subtitle {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+  }
+
+  .hairline {
+    width: 60px;
+    height: 1px;
+    background: var(--sepia);
+    margin-bottom: 16px;
+  }
+
+  .card p { margin: 0 0 14px; }
+
+  .card-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px 24px;
+    background: var(--paper-alt);
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 16px 20px;
+    margin-top: 16px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13.5px;
+  }
+
+  .card-data dt {
+    color: #6b6354;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 11px;
+    margin: 0;
+  }
+
+  .card-data dd {
+    margin: 2px 0 8px;
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+  }
+
+  .source-note {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    color: #8a8270;
+    margin-top: 16px;
+    font-style: italic;
+  }
+
+  /* Full line table */
+  .line-table-wrap {
+    background: #f4eedc;
+    border: 1px solid #c7bb98;
+    border-radius: 3px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    overflow-x: auto;
+  }
+
+  table.line-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15.5px;
+  }
+
+  table.line-table th {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--tide);
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  table.line-table td {
+    padding: 6px 12px;
+    border-bottom: 1px solid #d8cca8;
+  }
+
+  table.line-table tr.highlight td {
+    background: #e6d9b3;
+    font-weight: 600;
+    color: var(--rust);
+  }
+
+  table.line-table tr.heritage td {
+    background: #d9e4d4;
+  }
+
+  table.line-table td.num {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    color: #6b6354;
+  }
+
+  table.line-table td.prov {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    color: #7a6e5a;
+    white-space: nowrap;
+  }
+
+  table.line-table td.badge {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12.5px;
+    color: #6b6354;
+  }
+
+  .legend span.swatch {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 2px;
+    margin-right: 6px;
+    vertical-align: -1px;
+  }
+
+  .legend .sw-highlight { background: #e6d9b3; }
+  .legend .sw-heritage { background: #d9e4d4; }
+
+  table.line-table td.spoke-cell {
+    text-align: center;
+  }
+
+  table.line-table a.spoke-link {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11.5px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--paper);
+    background: var(--sepia);
+    text-decoration: none;
+    padding: 4px 10px;
+    border-radius: 2px;
+    white-space: nowrap;
+    display: inline-block;
+  }
+
+  table.line-table a.spoke-link:hover { background: var(--rust); }
+
+  table.line-table span.spoke-pending {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: #b3a888;
+    white-space: nowrap;
+  }
+
+  /* Essay */
+  .essay {
+    background: var(--tide);
+    color: #d8dde0;
+    border-radius: 3px;
+    padding: 36px 36px 32px;
+    margin: 50px 0 10px;
+  }
+
+  .essay .eyebrow {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c9b98a;
+    margin-bottom: 10px;
+  }
+
+  .essay h3 {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 24px;
+    margin: 0 0 16px;
+    color: #f0e9d4;
+  }
+
+  .essay p { margin: 0 0 14px; font-size: 16.5px; }
+
+  .essay p:last-child { margin-bottom: 0; }
+
+  footer {
+    background: var(--ink);
+    color: #a89f8b;
+    text-align: center;
+    padding: 30px 24px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+  }
+
+  footer strong { color: var(--paper); font-family: 'Cormorant Garamond', serif; font-size: 15px; }
+
+  @media (max-width: 600px) {
+    header h1 { font-size: 32px; }
+    .card-data { grid-template-columns: 1fr; }
+    table.line-table { font-size: 13px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="series-label">History &amp; Culture &middot; San José to Puntarenas</div>
+  <h1>Estaciones del Ferrocarril al Pacífico<span>Documentary Supplement &middot; San José &ndash; Puntarenas Line, 1910&ndash;1995</span></h1>
+  <div class="header-rule"></div>
+  <p class="header-sub">A station-by-station record of the Pacific Railway, companion volume to the Atlantic Railway supplement</p>
+</header>
+
+<nav>
+  <a href="#linea">The Full Line</a>
+  <a href="estacion_puente_rio_grande.html">Puente Río Grande</a>
+  <a href="estacion_puente_barranca_esparta.html">Ramal Esparta Bridge</a>
+  <a href="estacion_boca_barranca.html">Boca Barranca Crossing</a>
+  <a href="estacion_empalme.html">Empalme F.C.C.R y F.C.P.</a>
+  <a href="#patrimonio">Heritage Stations</a>
+  <a href="#historia">Construction History</a>
+</nav>
+
+<div class="intro-band">
+  <p>Fifty-eight numbered stations once carried coffee from the Central Valley down to the Pacific port of Puntarenas — a line built in fits and starts across nearly four decades, electrified in 1930, and finally closed in 1995, leaving behind the steel bridge that appears in two of the collection's Paynter Bros. postcards.</p>
+</div>
+
+<main>
+
+  <div class="route-note">
+    <strong>Companion volume:</strong> this supplement covers the Ferrocarril al Pacífico (San José–Puntarenas), the sister line to the Atlantic Railway covered separately in <em>Estaciones del Ferrocarril al Atlántico</em>. Its anchor crossing, <a href="estacion_puente_rio_grande.html">Puente Río Grande</a>, is also catalogued as T-04 in <em>Transport Costa Rica Histórica</em> (v2.7); the Río Grande spoke here gathers both Paynter Bros. postcards plus a 1922 National Geographic plate, with full engineering history.
+  </div>
+
+  <div class="section-head" id="linea"><h2>The Line — San José to Puntarenas</h2></div>
+
+  <p>Unlike the Atlantic line, the Pacific Railway's own station boards carried sequential numbers, and FECOSA's archive preserves the full run — 58 stations, distances measured <em>from San José</em> this time, the opposite convention from the Atlantic line. A short branch off <a href="estacion_ciruelas.html">Ciruelas (No. 10)</a> served Alajuela by way of Lagunillas and Montecillos, numbered 11–13 in the same sequence; a separate source consulted for the Ciruelas spoke names the same general stretch as passing through "Coyol de Alajuela" rather than Lagunillas — possibly an alternate or more specific name for the same locality, not yet reconciled here.</p>
+
+  <div class="line-table-wrap">
+    <table class="line-table">
+      <tr><th>No.</th><th>Station</th><th>km from San José</th><th>Province</th><th>Notes</th><th>Spoke</th></tr>
+      <tr class="heritage"><td class="num">1</td><td>San José (Estación Pacífico)</td><td class="num">0.0</td><td class="prov">San José</td><td class="badge">Patrimonio &middot; active Tren Interurbano stop</td><td class="spoke-cell"><a href="estacion_san_jose_pacifico.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">2</td><td>Sabana</td><td class="num">2.7</td><td class="prov">San José</td><td></td><td class="spoke-cell"><a href="estacion_sabana.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">3</td><td>Pavas</td><td class="num">6.3</td><td class="prov">San José</td><td class="badge"><a href="torres.html">Puente Río Torres</a> follows &middot; <a href="estacion_puente_virilla.html">Puente Río Virilla</a></td><td class="spoke-cell"><a href="estacion_pavas.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">4</td><td>Electriona</td><td class="num">11.5</td><td class="prov">San José</td><td class="badge"><a href="estacion_electriona.html">Named for the Planta Hidroeléctrica Electriona, Río Virilla</a></td><td class="spoke-cell"><a href="estacion_electriona.html" class="spoke-link">View</a></td></tr>
+      <tr class="highlight heritage"><td class="num">5</td><td>San Antonio de Belén</td><td class="num">14.4</td><td class="prov">Heredia</td><td class="badge">Patrimonio &middot; active Tren Interurbano stop</td><td class="spoke-cell"><a href="estacion_san_antonio_belen.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">6</td><td>San Rafael de Alajuela</td><td class="num">17.75</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">7</td><td>Ojo de Agua</td><td class="num">18.7</td><td class="prov">Alajuela</td><td class="badge"><a href="estacion_ojo_de_agua.html">Balneario, fed by the Barva spring</a></td><td class="spoke-cell"><a href="estacion_ojo_de_agua.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">8</td><td>Cortijo</td><td class="num">19.18</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">9</td><td>Nuestro Amo</td><td class="num">21.05</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">10</td><td>Ciruelas</td><td class="num">22.7</td><td class="prov">Alajuela</td><td class="badge"><a href="estacion_ciruelas.html">Ramal Alajuela branches here</a></td><td class="spoke-cell"><a href="estacion_ciruelas.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">11</td><td>&nbsp;&nbsp;Lagunillas (branch)</td><td class="num">26.0</td><td class="prov">Alajuela</td><td class="badge">Ramal Alajuela</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">12</td><td>&nbsp;&nbsp;Montecillos (branch)</td><td class="num">28.7</td><td class="prov">Alajuela</td><td class="badge">Ramal Alajuela</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">13</td><td>&nbsp;&nbsp;Alajuela (branch)</td><td class="num">31.7</td><td class="prov">Alajuela</td><td class="badge">Ramal Alajuela terminus</td><td class="spoke-cell"><a href="estacion_alajuela.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">14</td><td>Sánchez</td><td class="num">24.9</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">15</td><td>Siquiares</td><td class="num">27.4</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">16</td><td>Santa Rita</td><td class="num">28.7</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">17</td><td>Turrúcares</td><td class="num">30.3</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">18</td><td>Cebadilla</td><td class="num">34.6</td><td class="prov">Alajuela</td><td class="badge"><a href="estacion_puente_rio_grande.html">Puente Río Grande follows, 36.8 km</a></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td class="num">19</td><td>Concepción de Atenas</td><td class="num">37.3</td><td class="prov">Alajuela</td><td class="badge">Patrimonio &middot; now Museo Ferroviario de Atenas</td><td class="spoke-cell"><a href="estacion_atenas.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">20</td><td>Balsa</td><td class="num">41.8</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">21</td><td>Tornos</td><td class="num">44.0</td><td class="prov">Alajuela</td><td class="badge">Poncho Mora siding follows, 46.5 km</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">22</td><td>Mangos</td><td class="num">48.0</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="heritage"><td class="num">23</td><td>Escobal</td><td class="num">49.7</td><td class="prov">Alajuela</td><td class="badge">Patrimonio Histórico-Arquitectónico</td><td class="spoke-cell"><a href="estacion_escobal.html" class="spoke-link">View</a></td></tr>
+      <tr class="heritage"><td class="num">24</td><td>Quebradas</td><td class="num">52.5</td><td class="prov">Alajuela</td><td class="badge">Patrimonio Histórico-Arquitectónico</td><td class="spoke-cell"><a href="estacion_quebradas.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">25</td><td>Concepción</td><td class="num">58.0</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">26</td><td>Dantas</td><td class="num">59.0</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">27</td><td>Hacienda Vieja</td><td class="num">62.2</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">28</td><td>Marichal</td><td class="num">64.2</td><td class="prov">Alajuela</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="heritage"><td class="num">29</td><td>Orotina (Santo Domingo)</td><td class="num">66.3</td><td class="prov">Alajuela</td><td class="badge">Patrimonio &middot; agricultural warehouse today</td><td class="spoke-cell"><a href="estacion_orotina.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">30</td><td>Mastate</td><td class="num">69.3</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">31</td><td>Coyolar</td><td class="num">71.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><a href="estacion_coyolar.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">32</td><td>Pozón</td><td class="num">74.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><a href="estacion_pozon.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">33</td><td>Muñoz</td><td class="num">76.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">34</td><td>Ceiba</td><td class="num">76.4</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">35</td><td>Hidalgo</td><td class="num">78.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">36</td><td>Cascajal</td><td class="num">79.2</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><a href="estacion_cascajal.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">37</td><td>Kilómetro 81</td><td class="num">81.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">38</td><td>Uvita</td><td class="num">82.0</td><td class="prov">Puntarenas</td><td class="badge"><a href="corte_matamoros.html">Paso Matamoros follows, 83.9 km</a></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">39</td><td>Jesús María</td><td class="num">85.9</td><td class="prov">Puntarenas</td><td class="badge"><a href="puente_jesus_maria.html">Puente Río Jesús María precedes</a></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">40</td><td>Cambalache</td><td class="num">87.3</td><td class="prov">Puntarenas</td><td class="badge">Túnel Cambalache precedes</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">41</td><td>Salinas</td><td class="num">89.2</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">42</td><td>Figueroa (Arancibia)</td><td class="num">89.5</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">43</td><td>Mata de Limón</td><td class="num">91.5</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><a href="estacion_mata_de_limon.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">44</td><td>Caldera</td><td class="num">93.0</td><td class="prov">Puntarenas</td><td class="badge">Túnel Miraflores/<a href="desvio_carballo.html">Carballo</a> follows</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">45</td><td>Cabezas (Apóstegui)</td><td class="num">97.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">46</td><td>Pan de Azúcar</td><td class="num">99.3</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">47</td><td>Gregg</td><td class="num">100.0</td><td class="prov">Puntarenas</td><td class="badge">Puente Río Esparza follows</td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">50</td><td>Barranca</td><td class="num">102.0</td><td class="prov">Puntarenas</td><td class="badge"><a href="estacion_boca_barranca.html">Puente de Boca Barranca precedes</a></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">51</td><td>Santa Rosa</td><td class="num">103.3</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">52</td><td>La Rioja</td><td class="num">104.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">53</td><td>El Roble</td><td class="num">106.0</td><td class="prov">Puntarenas</td><td class="badge"><a href="estacion_el_roble.html">Junction with the Ramal Esparta, July 1910</a></td><td class="spoke-cell"><a href="estacion_el_roble.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">54</td><td>San Isidro</td><td class="num">107.8</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">55</td><td>Carrizal</td><td class="num">108.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr><td class="num">56</td><td>Chacarita</td><td class="num">110.0</td><td class="prov">Puntarenas</td><td class="badge"><a href="la_angostura.html">La Angostura</a> narrows precede Puntarenas</td><td class="spoke-cell"><a href="estacion_chacarita.html" class="spoke-link">View</a></td></tr>
+      <tr><td class="num">57</td><td>Cocal</td><td class="num">114.0</td><td class="prov">Puntarenas</td><td></td><td class="spoke-cell"><span class="spoke-pending">+ Add</span></td></tr>
+      <tr class="highlight"><td class="num">58</td><td>Puntarenas</td><td class="num">116.0</td><td class="prov">Puntarenas</td><td class="badge">Terminus &middot; former customs house, now UTN Sede del Pacífico</td><td class="spoke-cell"><a href="estacion_puntarenas.html" class="spoke-link">View</a></td></tr>
+    </table>
+    <div class="legend">
+      <span><span class="swatch sw-highlight"></span>Stops on this collection's documented bridges/postcards</span>
+      <span><span class="swatch sw-heritage"></span>Patrimonio Histórico-Arquitectónico (5 stations)</span>
+    </div>
+  </div>
+
+  <p style="font-size:14.5px; color:#6b6354; margin-top:-16px;">Stations 48–49 (La Ligia, <a href="estacion_esparta.html">Esparta</a>) belonged to an alternate Línea Vieja routing near Esparza and are omitted from the main sequence above for clarity — see the <a href="estacion_puente_barranca_esparta.html">Puente Barranca, Ramal Esparta</a> spoke for this earlier branch's surviving bridge. Source: FECOSA, <em>Estaciones del Ferrocarril al Pacífico</em>, after Vives Luque, Gutiérrez Cerdas &amp; Ruiz Briceño, <em>Estaciones Eje Ferroviario al Pacífico</em>.</p>
+
+  <div class="section-head" id="riogrande"><h2>Puente Río Grande — km 36.8</h2></div>
+
+  <div class="card" id="STA-RIOGRANDE">
+    <div class="card-body">
+      <div class="card-meta-row">
+        <span class="card-accession">STA-P01</span>
+        <span class="card-date">Now fully illustrated &middot; see the dedicated spoke</span>
+      </div>
+      <h3>Puente Río Grande</h3>
+      <div class="subtitle">Between Cebadilla (No. 18) and <a href="estacion_atenas.html">Concepción de Atenas</a> (No. 19) — 36.8 km from San José</div>
+      <div class="hairline"></div>
+      <p>The single most photographed structure on the Pacific line in this collection: a Paynter Bros. construction-phase postcard showing the cantilevered erection arm and cableway-suspended work basket used to build the crossing before any deck existed, a second Paynter Bros. card of the completed lattice-truss deck bridge carrying a full mixed train, and a 1922 National Geographic Magazine plate that used the same completed bridge as unrelated picture-desk illustration. All three plates, together with the bridge's full engineering history — designer Theodore Cooper, fabricator Milliken Bros., completed March 1902, and its 2002 Patrimonio Histórico-Arquitectónico listing — are gathered in the dedicated <a href="estacion_puente_rio_grande.html">Puente Río Grande</a> spoke.</p>
+      <div class="card-data">
+        <dt>Location</dt><dd>km 36.8, between stations 18 (Cebadilla) and 19 (Concepción de Atenas)</dd>
+        <dt>Length / height</dt><dd>219.38 m long, c. 102&ndash;105 m above the river</dd>
+        <dt>Heritage status</dt><dd>Patrimonio Histórico-Arquitectónico, Decree 30638-C (2002)</dd>
+        <dt>Related crossing in collection</dt><dd><a href="estacion_puente_virilla.html">Puente Río Virilla</a>, near station 3 (Pavas), publisher Anto Lehmann</dd>
+      </div>
+      <div class="source-note">See the full <a href="estacion_puente_rio_grande.html">Puente Río Grande spoke</a> for all three plates and complete sourcing.</div>
+    </div>
+  </div>
+
+  <div class="section-head" id="patrimonio"><h2>Heritage Stations</h2></div>
+
+  <div class="card" id="STA-PATRIMONIO">
+    <div class="card-body">
+      <div class="card-meta-row">
+        <span class="card-accession">STA-P02</span>
+        <span class="card-date">Designated 2021, La Nación / state decree</span>
+      </div>
+      <h3>Five Stations Declared Patrimonio Histórico-Arquitectónico</h3>
+      <div class="subtitle">San José, Atenas, Escobal, Quebradas, Orotina</div>
+      <div class="hairline"></div>
+      <p>Of the line's 58 numbered stations, six carry formal Costa Rican architectural-heritage protection: <a href="estacion_san_jose_pacifico.html">San José</a> (No. 1, the Pacific terminal, rehabilitated as an active Tren Interurbano stop), <a href="estacion_san_antonio_belen.html">San Antonio de Belén</a> (No. 5, declared Patrimonio Histórico-Arquitectónico by Decree No. 33637-C in 2007 and likewise an active Interurbano stop), <a href="estacion_atenas.html">Atenas</a> (No. 19, now the Museo Ferroviario de Atenas), <a href="estacion_escobal.html">Escobal</a> (No. 23), <a href="estacion_quebradas.html">Quebradas</a> (No. 24), and <a href="estacion_orotina.html">Orotina</a> (No. 29, today an agricultural-supply warehouse, where a 2017 community restoration effort relocated a Siemens electric locomotive, No. 130, for cosmetic restoration and display).</p>
+      <p>The Puntarenas terminal itself — the line's original raison d'être, reached in 1910 — survives in a different form: the old customs house at the port is now occupied by the Universidad Técnica Nacional's Pacific campus.</p>
+      <div class="card-data">
+        <dt>Heritage stations</dt><dd>Nos. 1, 19, 23, 24, 29 (of 58)</dd>
+        <dt>Active rail use today</dt><dd>Nos. 1 and 5 (Tren Interurbano)</dd>
+        <dt>Adaptive reuse</dt><dd>San Antonio de Belén &amp; San José: active Tren Interurbano stops &middot; Atenas: railway museum &middot; Orotina: agricultural warehouse &middot; Puntarenas customs house: university campus</dd>
+      </div>
+      <div class="source-note">Sources: Wikipedia, "Ferrocarril al Pacífico (Costa Rica)," citing Sequeira, La Nación (18 Jan. 2021); Castro, crhoy.com (28 Apr. 2017); Badilla, Teletica.com (27 Feb. 2014).</div>
+    </div>
+  </div>
+
+  <div class="essay" id="historia">
+    <div class="eyebrow">Historical Note</div>
+    <h3>Building the Line, 1857–1930</h3>
+    <p>The Pacific line took far longer to reach a working state than its Caribbean counterpart, and for a more prosaic reason than the Atlantic line's landslide-prone terrain: money kept running out. An 1857 contract with the English entrepreneur Richard Farrer produced only a short mule-drawn tramway between Puntarenas and Tivives — a "burrocarril" that lasted barely a year. Minor Keith's Northern Railway Company opened a Puntarenas–Esparza branch in 1882, using equipment intended for the Atlantic project, but a true trunk line connecting San José to the Pacific coast did not begin in earnest until president Rafael Iglesias Castro signed a contract with William Lynn in 1895.</p>
+    <p>Lynn's construction ran continuously from September 1897 until 1903, when he announced he had exhausted his financing. The government of Ascensión Esquivel Ibarra then completed the work using national funds and labour — including, at Orotina, the hand-dug Paso de Matamoros, cut through solid rock with dynamite in 1909. A final 1908 contract with the American engineer Warren H. Knowlton finished the remaining stretch from Cascajal to <a href="estacion_el_roble.html">El Roble</a>, where it joined the older 1882 Esparza branch in July 1910, completing the line's full 132 kilometres between Puntarenas and San José — see the <a href="estacion_empalme.html">Empalme</a> spoke for a separate, undated photograph of a rail junction elsewhere on the network. The line was electrified in 1930, using equipment from the German firm AEG and power from a small hydroelectric plant built at Tacares — making it one of the first electrified railways in a tropical country.</p>
+    <p>Passenger and freight service on the Pacific line ended in 1995, the same year that closed the Atlantic line, when Incofer was shut down by government decree. Periodic tourist excursions to Puntarenas ran from the old Pacific station in the early 2000s, and as of 2019 Incofer has studied reconstructing sections of the route — including a proposed tunnel near Ruta 27 to bypass the same kind of landslide-prone ground that doomed long stretches of the Atlantic line.</p>
+  </div>
+
+</main>
+
+<footer>
+  <strong>Estaciones del Ferrocarril al Pacífico</strong> &middot; San José &amp; Puntarenas Provinces, Costa Rica<br>
+  Documentary Supplement &middot; El Oasis History &amp; Culture Series
+</footer>
+
+</body>
+</html>
